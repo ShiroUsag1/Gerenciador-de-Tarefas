@@ -1,0 +1,51 @@
+# Directórios de compilação
+bin/
+obj/
+
+# Arquivos de configuração do Visual Studio
+*.suo
+*.user
+*.userprefs
+*.sln.ide
+.vscode/
+.idea/
+
+# Arquivos de pacote
+*.nupkg
+*.snupkg
+
+# Diretórios de dependências do NuGet
+packages/
+*.nupkg
+*.snupkg
+
+# Diretórios de cache do NuGet
+.nuget/
+# Arquivos de cache
+project.lock.json
+project.fragment.lock.json
+*.dll
+*.pdb
+*.exe
+*.xml
+
+# Arquivos de configuração do ambiente
+appsettings.Development.json
+appsettings.Test.json
+appsettings.json
+appsettings.Production.json
+
+# Configurações do Rider
+.idea/
+*.sln.iml
+
+# Resíduos de IDEs
+*.sln.docstates
+*.dbmdl
+*.dbproj
+*.dbproj.user
+
+# Outros
+*.log
+*.vs/
+*.vscode/
