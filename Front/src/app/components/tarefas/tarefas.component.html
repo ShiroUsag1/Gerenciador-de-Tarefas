@@ -1,0 +1,94 @@
+<div>
+  <div id="formTarefa" class="row mt-5">
+    <div class="col">
+      <h1>Gerenciamento de Tarefas</h1>
+      <form class="row">
+        <div class="form-group col-12 col-md">
+          <label for="titulo">Título</label>
+          <input
+            type="text"
+            class="form-control"
+            id="titulo"
+            [(ngModel)]="novaTarefa.titulo"
+            name="titulo"
+            required
+          />
+        </div>
+        <div class="form-group col-12 col-md">
+          <label for="responsavel">Código do Responsável</label>
+          <input
+            type="text"
+            class="form-control"
+            id="responsavel"
+            [(ngModel)]="novaTarefa.pessoaId"
+            name="responsavel"
+            required
+          />
+        </div>
+        <div class="col-12 col-md" *ngIf="buttonName == 'Salvar'">
+          <label for="status">Status</label>
+          <select
+            class="form-select"
+            [(ngModel)]="novaTarefa.status"
+            [ngModelOptions]="{ standalone: true }"
+            aria-label="Default select example"
+          >
+            <option value="pendente" selected>Pendente</option>
+            <option value="em andamento">Em Andamento</option>
+            <option value="concluída">Concluída</option>
+          </select>
+        </div>
+        <div class="form-group col-12">
+          <label for="descricao">Descrição</label>
+          <textarea
+            class="form-control"
+            id="descricao"
+            [(ngModel)]="novaTarefa.descricao"
+            name="descricao"
+            required
+          ></textarea>
+        </div>
+        <div class="col">
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="checkAddorUpdate()"
+          >
+            <i class="bi bi-plus-lg"></i>
+            {{ buttonName }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <h2>Tarefas</h2>
+      <ul class="list-group text-dark bg-light">
+        <li *ngFor="let tarefa of tarefas" class="list-group-item">
+          <h3>
+            <strong>{{ tarefa.titulo }}</strong>
+          </h3>
+          <p>{{ tarefa.descricao }}</p>
+          <p>Status: {{ tarefa.status }}</p>
+          <p>Código do Responsável: {{ tarefa.pessoaId }}</p>
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-success" (click)="definirDados(tarefa)">
+              <i class="bi bi-pencil-square"></i>
+              Editar
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="deleteTarefa(tarefa.tarefaId)"
+            >
+              <i class="bi bi-x-lg"></i>
+              Excluir
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

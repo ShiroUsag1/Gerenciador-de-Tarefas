@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-12 col-md-6">
+    <h2>Cadastro de Pessoa</h2>
+
+    <form class="row">
+      <div class="form-group col-12 col-md-6">
+        <label for="nome">Nome</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nome"
+          [(ngModel)]="novaPessoa.nome"
+          name="nome"
+          required
+        />
+      </div>
+      <div class="form-group col-12 col-md-6">
+        <label for="data">Data de Nascimento</label>
+        <input
+          class="form-control"
+          id="data"
+          [(ngModel)]="novaPessoa.dataNascimento"
+          name="data"
+          required
+          type="date"
+        />
+      </div>
+      <div class="form-group col-12">
+        <label for="email">Email</label>
+        <input
+          class="form-control"
+          id="email"
+          [(ngModel)]="novaPessoa.email"
+          name="email"
+          required
+        />
+      </div>
+      <div class="col">
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="checkAddorUpdate()"
+        >
+          <i class="bi bi-plus-lg"></i> {{ buttonName }}
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <h2>Pessoas Cadastradas</h2>
+    <ul class="list-group text-dark maxwidth bg-light">
+      <li *ngFor="let pessoa of pessoas" class="list-group-item">
+        <h3>
+          <strong>{{ pessoa.nome }}</strong>
+        </h3>
+        <p>Email: {{ pessoa.email }}</p>
+        <p>Código: {{ pessoa.pessoaId }}</p>
+        <p>Status: {{ pessoa.status }}</p>
+        <p>Nascimento: {{ pessoa.dataNascimento }}</p>
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-success" (click)="definirDados(pessoa)">
+            <i class="bi bi-pencil-square"></i>
+            Editar
+          </button>
+          <button
+            class="btn btn-danger"
+            (click)="deletePessoa(pessoa.pessoaId)"
+          >
+            <i class="bi bi-x-lg"></i>
+            Excluir
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
